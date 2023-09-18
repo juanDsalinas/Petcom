@@ -17,12 +17,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import sena.petcom.model.Usuario.Usuario;
 
-
 @Data
-@Builder
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name="Rol")
 public class Rol {
@@ -41,38 +42,4 @@ public class Rol {
 
     @OneToMany(mappedBy="FK", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     private List<Usuario> idUsuarioFK;
-
-    public Rol() {
-        idUsuarioFK=new ArrayList<Usuario>();
-    }
-
-    public Rol(Integer idRol, @NotEmpty String rol, @NotNull Boolean estadoRol) {
-        this.idRol = idRol;
-        this.rol = rol;
-        this.estadoRol = estadoRol;
-    }
-
-    public Integer getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(Integer idRol) {
-        this.idRol = idRol;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public Boolean getEstadoRol() {
-        return estadoRol;
-    }
-
-    public void setEstadoRol(Boolean estadoRol) {
-        this.estadoRol = estadoRol;
-    }
 }

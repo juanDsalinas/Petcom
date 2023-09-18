@@ -1,9 +1,5 @@
-package sena.petcom.model.Mascota;
+package sena.petcom.model.DetallesHistoria;
 
-import java.sql.Date;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,58 +7,52 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sena.petcom.model.Cliente.Cliente;
+import sena.petcom.model.Cita.Cita;
 import sena.petcom.model.HisoriaClinica.HistoriaClinica;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name="Mascota")
-public class Mascota {
+@Table(name="DetallesHistoria")
+public class DetallesHistoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMascota;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String nombreMascota;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String apellidoMascota;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer idDetallesHistoria;
 
     @NotNull
     @Column
-    private Date fechaNacimiento;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String raza;
+    private int tamañoDetalles;
     
     @NotNull
+    @Column
+    private int pesoDetalles;
+
+    @NotNull
     @NotEmpty
     @Column
-    private String genero;
+    private String antecedentesDetalles;
+
+    @NotNull
+    @NotEmpty
+    @Column
+    private String recomendaciones;
 
     @NotNull
     @Column
-    private Boolean estadoMascota;
+    private Boolean estadoDetalles;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    private Cliente FK;
+    private HistoriaClinica FK;
 
-    @OneToMany(mappedBy="FK", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<HistoriaClinica> idHistoriaClinicaFK;
-   
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Cita Fk;
 }

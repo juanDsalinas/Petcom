@@ -1,6 +1,6 @@
-package sena.petcom.model.Mascota;
+package sena.petcom.model.Cita;
 
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -16,53 +16,40 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import sena.petcom.model.Agenda.Agenda;
 import sena.petcom.model.Cliente.Cliente;
-import sena.petcom.model.HisoriaClinica.HistoriaClinica;
+import sena.petcom.model.DetallesHistoria.DetallesHistoria;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name="Mascota")
-public class Mascota {
+@Table(name="Cita")
+public class Cita {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMascota;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String nombreMascota;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String apellidoMascota;
-
-    @NotNull
-    @Column
-    private Date fechaNacimiento;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String raza;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer idCita;
     
     @NotNull
     @NotEmpty
     @Column
-    private String genero;
+    private String motivoConsulta;
 
+    @NotEmpty
     @NotNull
     @Column
-    private Boolean estadoMascota;
+    private Boolean estadoCita;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    private Cliente FK;
+    private Agenda FK;
 
-    @OneToMany(mappedBy="FK", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<HistoriaClinica> idHistoriaClinicaFK;
-   
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Cliente Fk;
+
+    @OneToMany(mappedBy="Fk", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    private List<DetallesHistoria> idDetallesHistoriaFK;
 }

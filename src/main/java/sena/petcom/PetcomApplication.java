@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import sena.petcom.model.Cliente.Cliente;
+import sena.petcom.model.Cliente.ICliente;
 import sena.petcom.model.Rol.IRol;
 import sena.petcom.model.Rol.Rol;
 import sena.petcom.model.Usuario.IUsuario;
@@ -23,6 +25,9 @@ public class PetcomApplication {
 
 	@Autowired
 	IRol irol;
+
+	@Autowired
+	ICliente icliente;
 
 	@Bean
 	CommandLineRunner init(){
@@ -65,6 +70,18 @@ public class PetcomApplication {
 				.build();
 
 			iusuario.save(usuario);
+
+
+			Cliente cliente=Cliente.builder()
+				.tipoDocumentoCliente("C.C.")
+				.numDocCliente(1019019842)
+				.nombreCliente("Oscar Ortiz")
+				.telefonoCliente(322349683)
+				.correoCliente("osca@a.a")
+				.estadoCliente(true)
+				.build();
+
+			icliente.save(cliente);
 		};
 	}
 }

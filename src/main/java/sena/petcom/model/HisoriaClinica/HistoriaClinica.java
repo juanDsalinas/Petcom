@@ -1,6 +1,6 @@
-package sena.petcom.model.Mascota;
+package sena.petcom.model.HisoriaClinica;
 
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -16,53 +16,49 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sena.petcom.model.Cliente.Cliente;
-import sena.petcom.model.HisoriaClinica.HistoriaClinica;
+import sena.petcom.model.DetallesHistoria.DetallesHistoria;
+import sena.petcom.model.Mascota.Mascota;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name="Mascota")
-public class Mascota {
+@Table(name="HistoriaClinica")
+public class HistoriaClinica {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMascota;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer idHistoriaClinica;
+
+    @NotNull
+    @Column
+    private int peso;
+
+    @NotNull
+    @Column
+    private int tamaño;
 
     @NotNull
     @NotEmpty
     @Column
-    private String nombreMascota;
+    private String enfermedades;
 
     @NotNull
     @NotEmpty
     @Column
-    private String apellidoMascota;
-
-    @NotNull
-    @Column
-    private Date fechaNacimiento;
+    private String antecedentes;
 
     @NotNull
     @NotEmpty
     @Column
-    private String raza;
-    
-    @NotNull
-    @NotEmpty
-    @Column
-    private String genero;
-
-    @NotNull
-    @Column
-    private Boolean estadoMascota;
+    private String diagnosticoHistoria;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    private Cliente FK;
+    private Mascota FK;
 
     @OneToMany(mappedBy="FK", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<HistoriaClinica> idHistoriaClinicaFK;
-   
+    private List<DetallesHistoria> idDetallesHistoriaFK;
 }

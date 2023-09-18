@@ -1,6 +1,6 @@
-package sena.petcom.model.Mascota;
+package sena.petcom.model.Cliente;
 
-import java.sql.Date;
+import java.math.BigInteger;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -10,59 +10,55 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sena.petcom.model.Cliente.Cliente;
-import sena.petcom.model.HisoriaClinica.HistoriaClinica;
+import sena.petcom.model.Cita.Cita;
+import sena.petcom.model.Mascota.Mascota;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name="Mascota")
-public class Mascota {
+@Table(name="Cliente")
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMascota;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String nombreMascota;
-
-    @NotNull
-    @NotEmpty
-    @Column
-    private String apellidoMascota;
+    private Integer idCliente;
 
     @NotNull
     @Column
-    private Date fechaNacimiento;
+    private String tipoDocumentoCliente;
 
     @NotNull
-    @NotEmpty
-    @Column
-    private String raza;
-    
-    @NotNull
-    @NotEmpty
-    @Column
-    private String genero;
+    @Column(unique=true)
+    private int numDocCliente;
 
     @NotNull
     @Column
-    private Boolean estadoMascota;
+    private String nombreCliente;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Cliente FK;
+    @NotNull
+    @Column(unique=true)
+    private int telefonoCliente;
+
+    @NotNull
+    @Column(unique=true)
+    private String correoCliente;
+
+    @NotNull
+    @Column
+    private Boolean estadoCliente;
+
+    @OneToMany(mappedBy="Fk", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    private List<Cita> idCitaFK;
 
     @OneToMany(mappedBy="FK", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<HistoriaClinica> idHistoriaClinicaFK;
-   
+    private List<Mascota> idMascotaFK;
 }

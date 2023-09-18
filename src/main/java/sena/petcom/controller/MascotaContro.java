@@ -1,4 +1,4 @@
-package sena.petcom.controller.Mascota;
+package sena.petcom.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,11 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-import jakarta.websocket.server.PathParam;
 import sena.petcom.model.Mascota.IMascota;
 import sena.petcom.model.Mascota.Mascota;
 
@@ -31,11 +28,6 @@ public class MascotaContro {
 
         return "registrarMasco";
     }
-    
-    @GetMapping("/verMasco")
-    public String verMasco(){
-        return "listMasco";
-    }
 
     @PostMapping("/regisMasco")
     public String regisMasco(@Validated Mascota masco, BindingResult result){
@@ -47,6 +39,12 @@ public class MascotaContro {
             return "redirect:/modulMasco";
         }
         
+    }
+    
+    @GetMapping("/listMasco")
+    public String verMasco(Model m){
+        m.addAttribute("mascotas",iMascota.findAll());
+        return "listMasco";
     }
 
 }

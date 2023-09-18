@@ -52,38 +52,24 @@
                 <th>Raza</th>
                 <th>Genero</th>
                 <th>Estado</th>
-                
-
+                <th>Operacion</th>
             </tr>
-            <tr th:if="${usuarios.size()>0}" th:each="c:${usuarios}">
-                <td th:text="${c.idUsuario}"></td>
-                <td th:text="${c.tipoDocumentoUsu}"></td>
-                <td th:text="${c.numDocumentoUsu}"></td>
-                <td th:text="${c.nombreUsu}"></td>
-                <td th:text="${c.apellidoUsu}"></td>
-                <td th:text="${c.telefonoUsu}"></td>
-                <td th:text="${c.correoUsu}"></td>
-                <td th:text="${c.claveUsu}"></td>
-                <td th:if="${c.estadoUsu==true}">
+            <tr th:if="${mascotas.size()>0}" th:each="c:${mascotas}">
+                <td th:text="${c.idMascota}"></td>
+                <td th:text="${c.FK.idCliente}"></td>
+                <td th:text="${c.nombreMascota}"></td>
+                <td th:text="${c.apellidoMascota}"></td>
+                <td th:text="${c.fechaNacimiento}"></td>
+                <td th:text="${c.raza}"></td>
+                <td th:text="${c.genero}"></td>
+                <td th:if="${c.estadoMascota==true}">
                     <h2>Activo</h2>
                 </td>
-                <td th:if="${c.estadoUsu==false}">
+                <td th:if="${c.estadoMascota==false}">
                     <h2>Inactivo</h2>
                 </td>
-                <td th:if="${c.FK.idRol==1}">
-                    <h2>Adminsitrador</h2>
-                </td>
-                <td th:if="${c.FK.idRol==2}">
-                    <h2>Secretario</h2>
-                </td>
-                <td th:if="${c.FK.idRol==3}">
-                    <h2>Doctor</h2>
-                </td>
-                <td th:if="${c.FK.idRol==4}">
-                    <h2>Peluquero</h2>
-                </td>
                 <td class="cell-with-button">
-                    <a th:href="@{/modificarUsuV/{idUsuario}(idUsuario=${c.idUsuario})}"><button class="btnM">Modificar</button></a>
+                    <a href=""><button class="btnM">Modificar</button></a>
                 </td>
             </tr>
         </table> 

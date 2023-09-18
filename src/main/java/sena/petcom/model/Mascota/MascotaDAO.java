@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.Null;
 
 @Repository
 public class MascotaDAO implements IMascota{
@@ -20,10 +19,11 @@ public class MascotaDAO implements IMascota{
         
     }
 
+    @SuppressWarnings("unchecked")
+    @Transactional()
     @Override
     public List<Mascota> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return em.createQuery("from Mascota").getResultList();
     }
 
     @Override

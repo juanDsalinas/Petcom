@@ -105,4 +105,14 @@ public class UsuarioContro {
     public String cerrar(Model m){
         return "redirect:/index";
     }
+
+    @GetMapping("/modulMascota")
+    public String modulA (Model m){
+        return "modulMascota";
+    }
+
+    @GetMapping("/listMasco")
+    public String regisMas (Model m){
+        return "listMasco";
+    }
 }

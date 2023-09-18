@@ -19,7 +19,7 @@
             <a href="oscar.html"><input type="submit" value="AGENDA"></a>
         </div>
         <div class="btn">
-            <a href="oscar.html"><input type="submit" value="MASCOTAS"></a>
+          <a th:href="@{/modulMasco}"><input type="submit" value="MASCOTAS"></a>
         </div>
         <div class="btn">
             <a href="oscar.html"><input type="submit" value="CLIENTES"></a>
@@ -36,41 +36,28 @@
     </div>
 </nav>
   <main>
-    <form th:action="@{/registrarUsu}" th:object="${usuario}" method="post">
+    <form th:action="@{/regisMasco}" th:object="${masco}" method="post">
       <h2>Registrar<br> Mascota</h2>
-      <select id="" name="" th:field="*{tipoDocumentoUsu}">
-        <option value="">Tipo Documento</option>
-        <option value="C.C.">C.C.</option>
-        <option value="T.I.">T.I.</option>
-        <option value="C.E.">C.E.</option>
-        <option value="DNI">DNI</option>
-      </select><br><br>
+     
+      <input type="text" id="idcli" th:field="*{FK.idCliente}" placeholder="id CLIENTES" required value="1"><br><br>
 
-      <input type="number" id="numerodocumento" th:field="*{numDocumentoUsu}" placeholder="Numero Documento" required><br><br>
+      <input type="text" id="nombreMascota" th:field="*{nombreMascota}" placeholder="Nombre Mascota" required><br><br>
 
-      <input type="text" id="nombre" th:field="*{nombreUsu}" placeholder="Nombre" required><br><br>
+      <input type="text" id="nombre" th:field="*{apellidoMascota}" placeholder="Apellido Mascota" required><br><br>
 
-      <input type="text" id="apellido" th:field="*{apellidoUsu}" placeholder="Apellido" required><br><br>
+      <input type="date" id="apellido" th:field="*{fechaNacimiento}" placeholder="Fecha Nacimiento" required><br><br>
 
-      <input type="number" id="telefono" th:field="*{telefonoUsu}" placeholder="Telefono" required><br><br>
+      <input type="text" id="raza" th:field="*{raza}" placeholder="Raza" required><br><br>
 
-      <input type="email" id="email" th:field="*{correoUsu}" placeholder="Email" required><br><br>
+      <input type="text" id="genero" th:field="*{genero}" placeholder="Genero" required><br><br>
 
-      <input type="password" id="clave" th:field="*{claveUsu}" placeholder="Clave"><br><br>
 
-      <select id="rol" name="rol" th:field="*{estadoUsu}">
-        <option value="">estado</option>
+      <select id="estadoMascota" name="estadoMascota" th:field="*{estadoMascota}">
         <option value="1">Activo</option>
         <option value="0">Inactivo</option>
       </select><br><br>
 
-      <select id="rol" name="rol" th:field="*{FK.idRol}">
-        <option value="">Rol</option>
-        <option value="1">Administrador</option>
-        <option value="2">Secretario</option>
-        <option value="3">Doctor</option>
-        <option value="4">Peluquero</option>
-      </select><br><br>
+      
       <input type="submit" class="regis" value="Registrar">
     </form>
   </main>

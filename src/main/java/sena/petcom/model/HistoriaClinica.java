@@ -15,6 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import sena.petcom.model.Mascota.Mascota;
 
 @Entity
 @Table(name="HistoriaClinica")

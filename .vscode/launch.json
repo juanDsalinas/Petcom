@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PetcomApplication<petcom>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "sena.petcom.PetcomApplication",
+            "projectName": "petcom",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

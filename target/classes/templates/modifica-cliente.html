@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/modificar-usu.css}">
+    <link rel="stylesheet" href="../static/css/modificar-usu.css">
 
     
     <title>Doctor-Historia-Clínica</title>
@@ -40,7 +40,7 @@
     </nav>
     <div id="all">
         <div class="cont">
-            <form  th:object="${usuario}" action="post">
+            <form  th:object="${cliente}" action="post">
                     <h1 id="h1">MODIFICAR CLIENTES</h1>
                 <div class="bot">
                     <h2>Nombre del cliente</h2>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="buttons">
                     <input type="button" id="btn1" value="MODIFICAR">
-                    <a th:href="@{/listUsu}"><input type="button" id="btn2" value="VOLVER"></a>
+                    <a th:href="@{/listCli}"><input type="button" id="btn2" value="VOLVER"></a>
                 </div>
             </form>
         </div>
@@ -88,7 +88,7 @@
         </div>
         <div class="toda">
             <h1>Todas las marcas y logotipos pertenecen a las respectivas empresas. ® 2023. creado por PETCOM  ©.</h1>
-        </div>x
+        </div>
     </footer>
 </body>
 </html>

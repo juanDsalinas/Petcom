@@ -7,5 +7,4 @@ public interface IMascota {
     public List<Mascota> findAll();
     public Mascota findOne(Integer idMascota);
     public void delete(Integer idMascota);
-        
 }

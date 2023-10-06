@@ -79,7 +79,7 @@ public class UsuarioContro {
     }
 
     @GetMapping("/modificarUsuV/{idUsuario}")
-    public String verModi(@PathVariable Integer idUsuario,Model m){
+    public String verModi(@PathVariable Integer idUsuario, Model m){
         Usuario usuario=null;
         if(idUsuario>0){
             usuario=user.findOne(idUsuario);

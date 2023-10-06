@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import sena.petcom.model.Usuario.Usuario;
 
 @Repository
 public class MascotaDAO implements IMascota{
@@ -26,10 +27,10 @@ public class MascotaDAO implements IMascota{
         return em.createQuery("from Mascota").getResultList();
     }
 
+    @Transactional
     @Override
     public Mascota findOne(Integer idMascota) {
-        // TODO Auto-generated method stub
-        return null;
+        return em.find(Mascota.class, idMascota);
     }
 
     @Transactional

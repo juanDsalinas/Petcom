@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import sena.petcom.model.Usuario.Usuario;
 
 @Repository
 public class MascotaDAO implements IMascota{

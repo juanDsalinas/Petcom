@@ -12,7 +12,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import sena.petcom.model.Mascota.IMascota;
 import sena.petcom.model.Mascota.Mascota;
-import sena.petcom.model.Usuario.Usuario;
 
 @Controller
 public class MascotaContro {

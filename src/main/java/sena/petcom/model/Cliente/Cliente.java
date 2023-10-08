@@ -1,6 +1,5 @@
 package sena.petcom.model.Cliente;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -12,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
